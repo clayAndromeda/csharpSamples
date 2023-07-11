@@ -9,11 +9,16 @@ double averageCompressionRate = 0;
 double minCompressionRate = Double.MaxValue;
 double maxCompressionRate = Double.MinValue;
 
+HuffmanCoding.Encode("ABCDEFGAAABBBCDEDG");
+
 for (int i = 0; i < testCount; ++i)
 {
 	var input = TestStringGenerator.GenerateRandomAlphabetString(1000000);
+#if true // Run Length Encoding
 	var encoded = Rle.Encode(input);
 	var decoded = Rle.Decode(encoded);
+#elif false
+#endif
 	
 	// 圧縮率を計算する
 	var compressionRate = (double)encoded.Length / input.Length;
