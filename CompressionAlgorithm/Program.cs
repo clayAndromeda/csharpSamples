@@ -23,10 +23,7 @@ double averageCompressionRate = 0;
 double minCompressionRate = Double.MaxValue;
 double maxCompressionRate = Double.MinValue;
 
-var bits = HuffmanCoding.Encode("AAAABBBCCD");
-Console.WriteLine("raw" + (bits));
-Console.WriteLine("managed" + BitArrayToString(bits));
-
+HuffmanAlgorithm.CompressTest("ABCAAAABCDEEBBCDDFT");
 
 for (int i = 0; i < testCount; ++i)
 {
