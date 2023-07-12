@@ -1,5 +1,19 @@
-﻿using Clay.Compression.Algorithms;
+﻿using System.Collections;
+using System.Text;
+using Clay.Compression.Algorithms;
 using Clay.Compression.Tests;
+
+static string BitArrayToString(BitArray bitArray)
+{
+	StringBuilder binary = new StringBuilder(bitArray.Count);
+
+	foreach (bool bit in bitArray)
+	{
+		binary.Append(bit ? "1" : "0");
+	}
+
+	return binary.ToString();
+}
 
 // テストを繰り返す回数
 const int testCount = 10;
@@ -9,7 +23,10 @@ double averageCompressionRate = 0;
 double minCompressionRate = Double.MaxValue;
 double maxCompressionRate = Double.MinValue;
 
-HuffmanCoding.Encode("ABCDEFGAAABBBCDEDG");
+var bits = HuffmanCoding.Encode("AAAABBBCCD");
+Console.WriteLine("raw" + (bits));
+Console.WriteLine("managed" + BitArrayToString(bits));
+
 
 for (int i = 0; i < testCount; ++i)
 {
